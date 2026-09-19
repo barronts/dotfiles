@@ -1,0 +1,13 @@
+nushell
+ls
+$nu.config-path
+help
+help show_banner
+help <show_banner>
+nu
+ll
+ls | where name !~ '^\.'<\n>
+ll
+ls
+ll
+ls

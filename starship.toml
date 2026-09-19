@@ -1,0 +1,32 @@
+format = """
+[┌─](bold blue)[ $directory](bold cyan)[$git_branch$git_status](bold green)
+[└─](bold blue)$character"""
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+format = "[$path]($style) "
+
+[git_branch]
+symbol = " "
+style = "bold green"
+format = "[$symbol$branch]($style)"
+
+[git_status]
+style = "bold yellow"
+format = "[$all_status$ahead_behind]($style) "
+
+[character]
+success_symbol = "[❯](bold blue)"
+error_symbol = "[❯](bold red)"
+vicmd_symbol = "[❮](bold blue)"
+
+[cmd_duration]
+min_time = 4000
+format = "[$duration](bold yellow) "
+
+[time]
+disabled = false
+format = "[$time](bold blue) "
+time_format = "%H:%M"

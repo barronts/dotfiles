@@ -1,0 +1,13 @@
+# Force btop to use your custom Kitty ANSI color scheme
+color_theme = "TTY"
+
+# Disable truecolor gradients for a flatter, blocky look
+truecolor = False
+
+# Use traditional block characters instead of smooth braille curves
+rounded_corners = False
+graph_symbol = "block"
+
+# Clean up background layers to sit flatly on your "Crow" charcoal background
+theme_background = False
+
