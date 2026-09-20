@@ -1,0 +1,10 @@
+# System and Cache Files
+.DS_Store
+.cache/
+.local/
+*.log
+*.tmp
+
+# Application specific locks
+.fish_history
+.node_repl_history
