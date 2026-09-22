@@ -11,3 +11,5 @@ ll
 ls
 ll
 ls
+LS
+ls

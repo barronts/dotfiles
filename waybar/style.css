@@ -1,0 +1,77 @@
+window#waybar {
+    background-color: #0c1115;
+    color: #ffffff;
+    font-family: "JetBrains Mono", sans-serif;
+    font-size: 14px;
+    border-bottom: 2px solid #1f5872;
+}
+
+#window {
+color: #2a8bc1;
+font-weight: bold;
+}
+
+/* Thin accent underline on hover - cheap, tasteful "alive" feel without extra icons */
+#custom-dotfiles:hover, #custom-updates:hover, #disk:hover, #custom-cpu:hover,
+#memory:hover, #custom-gpu:hover, #pulseaudio:hover,
+#network:hover {
+border-bottom: 2px solid #2a8bc1;
+}
+
+#custom-dotfiles.clean {
+color: #35a770;
+padding: 0 6px;
+}
+
+#custom-dotfiles.dirty {
+color: #bd0f2f;
+padding: 0 6px;
+font-weight: bold;
+}
+
+#custom-updates.clean {
+color: #778397;
+padding: 0 6px;
+}
+
+#custom-updates.pending {
+color: #e8c341; /* Glacier yellow - noticeable, not alarming */
+padding: 0 6px;
+}
+
+#disk, #custom-cpu, #memory, #pulseaudio, #custom-gpu {
+padding: 0 6px;
+color: #35a770;
+}
+
+/* Reserve fixed width for modules whose text length changes (digit count varies),
+ *  so the box doesn't resize and push the centered clock around - especially
+ *  noticeable on the shorter vertical HDMI bar. Widen if text still wraps/clips
+ *  for your longest expected values. */
+#custom-cpu, #custom-gpu {
+min-width: 130px;
+}
+#disk, #memory {
+min-width: 90px;
+}
+#custom-updates {
+min-width: 100px;
+}
+
+#network {
+padding: 0 6px;
+color: #2a8bc1;
+}
+
+#network.disconnected {
+color: #bd0f2f;
+}
+
+#critical {
+color: #bd0f2f;
+}
+
+#clock {
+padding: 0 12px;
+color: #778397;
+}

@@ -9,6 +9,11 @@ if status is-interactive
     # Load custom pathing for user binaries (Cargo)
     fish_add_path ~/.cargo/bin
 
+    # Run Fastfetch cleanly at terminal launch
+    if type -q fastfetch
+        fastfetch
+    end
+
     # 1. Clean, Contextual Taskbook Agenda Dashboard
     if type -q tb
         echo -e "\n  [\e[1;34mCURRENT TASKS PROGRESS\e[0m]"
@@ -22,11 +27,14 @@ if status is-interactive
     starship init fish | source
 end
 
+function waybar-reload
+    killall waybar
+    setsid waybar & disown
+end
+
 # Global desktop alias overrides
 alias fastfetch='fastfetch 2>/dev/null'
 
-
-
-
 set -gx EDITOR 'zed --wait'
 set -gx VISUAL 'zed --wait'
+

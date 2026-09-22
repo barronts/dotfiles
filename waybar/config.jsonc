@@ -1,0 +1,98 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    "modules-left": [
+        "wlr/taskbar"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "custom/dotfiles",
+        "custom/updates",
+        "disk",
+        "custom/cpu",
+        "memory",
+        "custom/gpu",
+        "pulseaudio",
+        "network",
+        "tray"
+    ],
+
+    "wlr/taskbar": {
+        "format": "{name}",
+        "icon-size": 0,
+        "on-click": "activate"
+    },
+
+    "tray": {
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M}"
+    },
+
+    "custom/dotfiles": {
+        "exec": "~/scripts/dotfiles-status.fish",
+        "return-type": "json",
+        "interval": 30,
+        "on-click": "kitty -e fish -c 'cd ~/src/dotfiles && git status; read'"
+    },
+
+    // Fedora/dnf pending updates - checked every 4 hours, click to open a terminal and update
+    "custom/updates": {
+        "exec": "~/scripts/updates-status.fish",
+        "return-type": "json",
+        "interval": 14400,
+        "on-click": "kitty -e fish -c 'sudo dnf upgrade; read'"
+    },
+
+    "disk": {
+        "interval": 60,
+        "format": "<span color='#1f5872'>[</span> disk: {percentage_used}% <span color='#1f5872'>]</span>",
+        "path": "/home",
+        "tooltip-format": "{used} used / {total} total ({free} free)"
+    },
+
+    // AMD Ryzen 7 7800X3D - usage % and temp, combined into one block like GPU
+    "custom/cpu": {
+        "exec": "~/scripts/cpu-status.fish",
+        "return-type": "json",
+        "interval": 3
+    },
+
+    "memory": {
+        "format": "<span color='#1f5872'>[</span> mem: {}% <span color='#1f5872'>]</span>",
+        "tooltip-format": "{used:0.1f}GB / {total:0.1f}GB used"
+    },
+
+    // AMD Radeon RX 9060 XT - usage % and temp, read straight from sysfs
+    "custom/gpu": {
+        "exec": "~/scripts/gpu-status.fish",
+        "return-type": "json",
+        "interval": 3
+    },
+
+    "pulseaudio": {
+        "format": "<span color='#1f5872'>[</span> vol: {volume}% <span color='#1f5872'>]</span>",
+        "format-muted": "<span color='#1f5872'>[</span> muted <span color='#1f5872'>]</span>",
+        "on-click": "pavucontrol",
+        "scroll-step": 5,
+        "tooltip-format": "{desc}"
+    },
+
+    "network": {
+        "format-wifi": "<span color='#1f5872'>[</span> wifi: {signalStrength}% <span color='#1f5872'>]</span>",
+        "format-ethernet": "<span color='#1f5872'>[</span> eth: connected <span color='#1f5872'>]</span>",
+        "format-disconnected": "<span color='#1f5872'>[</span> disconnected <span color='#1f5872'>]</span>",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+        "on-click": "kitty -e nmtui"
+    }
+}
