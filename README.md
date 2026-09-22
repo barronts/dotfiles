@@ -1,20 +1,23 @@
-# My Dotfiles
+# dotfiles
 
-A clean, minimalist workspace configuration optimized for development.
+my daily driver setup on Nobara — KDE Plasma with Waybar bolted on, Fish/Nushell,
+and a custom "Glacier" theme (nordic-noir cyberpunk, if you want a label for it).
 
-## Environment Details
-- **OS:** Nobara Linux
-- **Shells:** Fish (Main) / Nushell (Rice)
-- **Terminal:** Kitty
-- **Editor:** Kate
-- **Color Scheme:** Custom Glacier Theme
+## setup
+- OS: Nobara Linux, KDE Plasma (Waybar replacing the panels)
+- shells: Fish day-to-day, Nushell when I want clean folder output
+- term: Kitty, multiplexed with Zellij
+- editor: Kate
+- theme: Glacier — obsidian background, icy cyan/slate midtones, mint/yellow/red accents
 
-## Included Components
-- `fish/` - Custom shell themes, plugins, and configurations.
-- `nushell/` - Structural script layouts and minimalist folder routing.
-- `kitty/` - Custom terminal padding, font scales, and background tokens.
-- `cava/` - Audio visualizer custom-mapped to match system metrics.
-- `user-dirs.dirs` - Custom lowercase directory tracking logic.
+## what's in here
+- `fish/` — themes, plugins, functions
+- `nushell/` — the nu-side config, mostly folder/file listing tweaks
+- `kitty/` — padding, font scale, background tokens for the theme
+- `cava/` — audio visualizer, colors mapped to match everything else
+- `waybar/` — replaces Plasma's panels, uses the Glacier palette
+- `user-dirs.dirs` — lowercase home layout (apps/, doc/, dl/, media/, scripts/, src/, tmp/)
 
-## Management
-Configurations are mirrored from local paths using a custom automation script located in your scripts folder.
+## backups
+`scripts/backup-dots.fish` wipes the old backup and re-pulls the tracked
+config dirs. Uses `$HOME` throughout so nothing's hardcoded to my username.
